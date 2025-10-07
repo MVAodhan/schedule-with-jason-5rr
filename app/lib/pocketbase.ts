@@ -2,7 +2,11 @@ import PocketBase from "pocketbase";
 
 const globalForPB = globalThis as unknown as { pb: PocketBase | undefined };
 
-const pb = globalForPB.pb ?? new PocketBase(process.env.POCKETBASE_URL);
+const pb =
+  globalForPB.pb ??
+  new PocketBase(
+    "https://schedule-with-jason-4-pocketbase-production.up.railway.app"
+  );
 
 pb.autoCancellation(false);
 
