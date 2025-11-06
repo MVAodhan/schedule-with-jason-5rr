@@ -5,20 +5,11 @@ import { Card, CardHeader, CardTitle, CardContent } from "~/components/ui/card";
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "~/components/ui/select";
-import { DatePickerDemo } from "~/components/DatePicker";
 
-import { DateTime } from "luxon";
+import { DatePickerDemo } from "~/components/DatePicker";
 
 import { pb } from "~/lib/pocketbase";
 import { slugify } from "~/lib/utils";
-import { Badge } from "~/components/ui/badge";
 
 const NewEpisode = () => {
   const titleRef = useRef<HTMLInputElement | null>(null);
@@ -31,6 +22,7 @@ const NewEpisode = () => {
   const descriptionRef = useRef<HTMLInputElement | null>(null);
   const guestNameRef = useRef<HTMLInputElement | null>(null);
   const guestTwitterRef = useRef<HTMLInputElement | null>(null);
+  const guestBufferRef = useRef<HTMLInputElement | null>(null);
   //   const tagsRef = useRef<HTMLInputElement | null>(null);
 
   const createNewEpisode = async () => {
@@ -41,6 +33,7 @@ const NewEpisode = () => {
       date: newUTCString,
       description: descriptionRef.current?.value,
       guest_name: guestNameRef.current?.value,
+      guest_buffer: guestBufferRef.current?.value,
       tags: tags,
     });
   };
@@ -95,6 +88,20 @@ const NewEpisode = () => {
               <Input
                 id="guest_twitter"
                 ref={guestTwitterRef}
+                placeholder="eg. jlengstorf"
+                className="w-full"
+              />
+            </div>
+            <div className="space-y-2">
+              <div className="flex flex-col gap-1">
+                <Label className="text-md font-bold" htmlFor="guest_buffer">
+                  Guest Bluesky
+                </Label>
+                <span className="text-xs italic">no @ symbol</span>
+              </div>
+              <Input
+                id="guest_buffer"
+                ref={guestBufferRef}
                 placeholder="eg. jlengstorf"
                 className="w-full"
               />

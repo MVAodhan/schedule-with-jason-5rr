@@ -13,6 +13,7 @@ export interface Episode extends RecordModel {
   description: string;
   guest_name: string;
   guest_twitter?: string;
+  guest_buffer?: string;
   website?: boolean;
   calendar?: boolean;
   scheduled_tweet?: boolean;

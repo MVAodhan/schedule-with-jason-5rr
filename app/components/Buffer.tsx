@@ -47,11 +47,11 @@ const Buffer = ({ episode }: { episode: Episode }) => {
             <Button
               variant="ghost"
               onClick={() =>
-                navigator.clipboard.writeText(episode.guest_twitter!)
+                navigator.clipboard.writeText("@" + episode.guest_twitter!)
               }
             >
               <Clipboard />
-              Guest Twitter Handel
+              {`@` + episode.guest_twitter}
             </Button>
           )}
           <div className="flex items-center">
@@ -79,9 +79,12 @@ const Buffer = ({ episode }: { episode: Episode }) => {
                         episode.description,
                         episode.youtube_link
                       );
+
                       const replaced = tw.replace(
-                        "Jason Lengstorf",
-                        "@jlengstorf"
+                        episode.guest_name,
+                        episode.guest_twitter
+                          ? "@" + episode.guest_twitter + ""
+                          : ""
                       );
 
                       navigator.clipboard.writeText(replaced);
@@ -102,8 +105,8 @@ const Buffer = ({ episode }: { episode: Episode }) => {
                         episode.youtube_link
                       );
                       const replaced = tw.replace(
-                        "Jason Lengstorf",
-                        "@jlengstorf"
+                        episode.guest_name,
+                        episode.guest_twitter ? "@" + episode.guest_twitter : ""
                       );
 
                       navigator.clipboard.writeText(replaced);
@@ -124,8 +127,8 @@ const Buffer = ({ episode }: { episode: Episode }) => {
                         episode.youtube_link
                       );
                       const replaced = tw.replace(
-                        "Jason Lengstorf",
-                        "@jlengstorf"
+                        episode.guest_name,
+                        episode.guest_twitter ? "@" + episode.guest_twitter : ""
                       );
 
                       navigator.clipboard.writeText(replaced);
@@ -170,8 +173,8 @@ const Buffer = ({ episode }: { episode: Episode }) => {
                         episode.youtube_link
                       );
                       const replaced = tw.replace(
-                        "Jason Lengstorf",
-                        "@jason.energy"
+                        episode.guest_name,
+                        episode.guest_buffer ? "@" + episode.guest_buffer : ""
                       );
 
                       navigator.clipboard.writeText(replaced);
@@ -192,8 +195,8 @@ const Buffer = ({ episode }: { episode: Episode }) => {
                         episode.youtube_link
                       );
                       const replaced = nm.replace(
-                        "Jason Lengstorf",
-                        "@jason.energy"
+                        episode.guest_name,
+                        episode.guest_buffer ? "@" + episode.guest_buffer : ""
                       );
                       navigator.clipboard.writeText(replaced);
                     }}
@@ -213,8 +216,8 @@ const Buffer = ({ episode }: { episode: Episode }) => {
                         episode.youtube_link
                       );
                       const replaced = lt.replace(
-                        "Jason Lengstorf",
-                        "@jason.energy"
+                        episode.guest_name,
+                        episode.guest_buffer ? "@" + episode.guest_buffer : ""
                       );
 
                       navigator.clipboard.writeText(replaced);

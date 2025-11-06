@@ -9,21 +9,22 @@ export default function Header() {
   const getUser = async () => {
     let authSore = pb.authStore.record;
 
-    if (!authSore && user != null) {
-      setUser(null);
-    } else {
+    if (authSore && user === null) {
       setUser(authSore);
+    } else {
+      setUser(null);
     }
   };
   useEffect(() => {
     getUser();
   }, []);
+
   return (
     <nav className="flex flex-row p-2  gap-2 bg-white text-black justify-between">
       <div className="px-2 font-bold flex w-full justify-between">
         <Link to="/">Home</Link>
 
-        <div>
+        <div className="flex gap-2 items-center">
           {!user && <Link to="/login">Login</Link>}
           {user && (
             <Button
@@ -34,6 +35,7 @@ export default function Header() {
               Log out
             </Button>
           )}
+          <Link to="/new">New</Link>
         </div>
       </div>
     </nav>

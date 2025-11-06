@@ -16,6 +16,7 @@ const Edit = ({ episode }: { episode: Episode }) => {
   const descriptionRef = useRef<HTMLTextAreaElement | null>(null);
   const guestNameRef = useRef<HTMLInputElement | null>(null);
   const guestTwitterRef = useRef<HTMLInputElement | null>(null);
+  const guestBufferRef = useRef<HTMLInputElement | null>(null);
 
   const [newUTCString, setNewUTCString] = useState<string | null>(null);
   useEffect(() => {
@@ -23,8 +24,9 @@ const Edit = ({ episode }: { episode: Episode }) => {
 
     descriptionRef.current!.value = episode.description;
     guestNameRef.current!.value = episode.guest_name;
-    if (episode.guest_twitter) {
+    if (episode.guest_twitter && episode.guest_buffer) {
       guestTwitterRef.current!.value = episode.guest_twitter;
+      guestBufferRef.current!.value = episode.guest_buffer;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -89,6 +91,20 @@ const Edit = ({ episode }: { episode: Episode }) => {
               <Input
                 id="guest_twitter"
                 ref={guestTwitterRef}
+                placeholder="eg. jlengstorf"
+                className="w-full"
+              />
+            </div>
+            <div className="space-y-2">
+              <div className="flex flex-col gap-1">
+                <Label className="text-md font-bold" htmlFor="guest_twitter">
+                  Guest Buffer
+                </Label>
+                <span className="text-xs italic">no @ symbol</span>
+              </div>
+              <Input
+                id="guest_twitter"
+                ref={guestBufferRef}
                 placeholder="eg. jlengstorf"
                 className="w-full"
               />

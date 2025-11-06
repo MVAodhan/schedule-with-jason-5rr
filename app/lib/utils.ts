@@ -223,7 +223,7 @@ export const getHighlightText = (
 ) => {
   if (twitter) {
     return `Did you miss @${twitter} teaching us about ${tech} live on LWJ?
-      No worries! Watch highlights from the episode here, then check out the full episode replay https://codetv.dev/series/learn-with-jason/s8/${slug}`;
+No worries! Watch highlights from the episode here, then check out the full episode replay https://codetv.dev/series/learn-with-jason/s8/${slug}`;
   }
   return `Did you miss ${name} teaching us about ${tech} live on LWJ?
 No worries! Watch highlights from the episode here, then check out the full episode replay https://codetv.dev/series/learn-with-jason/s8/${slug}`;
